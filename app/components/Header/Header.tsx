@@ -9,7 +9,7 @@ import soundToggle from "../../sounds/switch.wav"
 import { COLOR_MODE_KEY } from '../../constants';
 import type { TColorMode } from '../../constants';
 import { setCookie } from '../../utils/cookie';
-import { useLoaderData, useNavigation, useLocation, Link } from '@remix-run/react';
+import { useRouteLoaderData, useNavigation, useLocation, Link } from '@remix-run/react';
 import { loader as rootLoader } from '~/root';
 
 function replaceAll(originalString: string, find: string, replace: string) {
@@ -61,7 +61,7 @@ const lightVars = `
 
 const Header = () => {
 
-  const loaderData = useLoaderData<typeof rootLoader>();
+  const loaderData = useRouteLoaderData<typeof rootLoader>('root');
   const navigation = useNavigation();
 
   const location = useLocation();

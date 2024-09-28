@@ -1,10 +1,12 @@
 import {
+  isRouteErrorResponse,
   json,
   Links,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
+  useRouteError,
 } from "@remix-run/react";
 import type { LinksFunction, LoaderFunction } from "@remix-run/node";
 
@@ -12,6 +14,7 @@ import "./tailwind.css";
 import Header from "./components/Header/Header";
 import { getCookie } from "./utils/cookie";
 import { COLOR_MODE_KEY } from "./constants";
+import VectorCharacter404 from "./components/VectorCharacter404";
 
 export const links: LinksFunction = () => [
   {
@@ -98,6 +101,44 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Scripts />
       </body>
     </html>
+  );
+}
+
+export function ErrorBoundary() {
+
+  const error = useRouteError();
+
+  let message;
+  switch (isRouteErrorResponse(error)) {
+    case false:
+      message = (
+        <p>
+          Looks like you tried to visit a page that you do not have access
+          to.
+        </p>
+      );
+      break;
+    case true:
+      message = (
+        <p>Oops! Looks like you tried to visit a page that does not exist.</p>
+      );
+      break;
+
+    default:
+      throw new Error(`Unexpected error: ${error}`);
+  }
+
+  return (
+    <div className="notFoundWrapper">
+      <div className="notFound">
+        <VectorCharacter404 />
+        <h1>
+            Oops! 
+        </h1>
+        <p>{message}</p>
+        <a href="/">Go Home</a>
+      </div>
+    </div>
   );
 }
 
