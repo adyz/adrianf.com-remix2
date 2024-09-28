@@ -28,12 +28,16 @@ export default function ExperienceSection({ item, first = false, last = false, h
           `}
     >
       <div>
-        <img className="rounded-lg w-16 h-16 bg-colorWhite shadow-md float-right relative z-30" width="100%" loading="lazy" height="100%" alt={`Logo of ${item.company}`} src={cloudinaryLogo} />
+        <img
+        style={{
+          viewTransitionName: `transition-${item.company}`
+        }}
+        className="rounded-lg w-16 h-16 bg-colorWhite shadow-md float-right relative z-30" width="100%" loading="lazy" height="100%" alt={`Logo of ${item.company}`} src={cloudinaryLogo} />
         <div>
           {full ? (
             <p className="text-colorBrown text-sm md:text-lg xl:text-xl uppercase font-bold tracking-widest">{item.title}</p>
           ) : (
-            <Link className="text-colorBrown text-sm md:text-lg xl:text-xl uppercase font-bold tracking-widest block pt-5" to={`./${item.companyLogo}`}>{item.title}</Link>
+            <Link unstable_viewTransition className="text-colorBrown text-sm md:text-lg xl:text-xl uppercase font-bold tracking-widest block pt-5" to={`./${item.companyLogo}`}>{item.title}</Link>
           )}
           <div className="w-12 h-[2px] bg-colorBrown mt-1"></div>
         </div>

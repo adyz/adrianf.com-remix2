@@ -171,6 +171,7 @@ const Header = () => {
   function LinkItem({ label, link }: { label: string; link: string }) {
     return (
       <Link
+        unstable_viewTransition
         style={linkStyle}
         prefetch="intent"
         className={`
