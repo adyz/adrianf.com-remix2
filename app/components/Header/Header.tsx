@@ -301,6 +301,7 @@ const Header = () => {
               select-none
               cursor-grab
               will-change-transform
+              touch-none
             " 
             {...bind()} 
             style={{ 
