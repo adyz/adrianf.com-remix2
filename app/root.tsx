@@ -91,7 +91,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
               </a>
             </p>
-            <p className="text-[10px] m-0" ><small>Latest update: 19 Jan 2023</small></p>
+            <p className="text-[10px] m-0" ><small>Latest update: 29 September 2024</small></p>
           </div>
         </footer>
         <ScrollRestoration />

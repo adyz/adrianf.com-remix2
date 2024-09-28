@@ -1,12 +1,24 @@
-import { json, useLoaderData } from '@remix-run/react';
+import { json, useLoaderData, MetaFunction } from '@remix-run/react';
 import PageHeader from "../../components/PageHeader"
 import ExperienceSection from "../../components/ExperienceSection"
 import experience from '../../data/experience';
 import TrackVisibility from '~/hooks/TrackVisibility';
+import { getSocialMetas } from '~/utils/seo/meta';
 
 export const loader = () => {
     return json(experience)
 }
+
+export const meta: MetaFunction = ({ location }) => {
+    return [{
+        ...getSocialMetas({
+            url: location.pathname,
+            title: "Adrian Florescu - Experience",
+            description: "Working with startups and big companies like IBM in my more than 10 years front-end development career",
+            keywords: "adrian, adrian florescu, career, resume, florescu, experience, html, css, js, typescript, remix, react, romania, bucharest, front-end development"
+        })
+    }]
+};
 
 export default function Page() {
     const data = useLoaderData<typeof loader>()
