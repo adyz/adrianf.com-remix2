@@ -1,10 +1,10 @@
-import PageHeader from "../../components/PageHeader";
+import PageHeader from "../components/PageHeader";
 import type {LoaderFunction, MetaFunction } from '@remix-run/node';
 import { json } from '@remix-run/node';
-import ExperienceSection from "~/components/ExperienceSection";
-import experience from '../../data/experience';
 import { useLoaderData } from '@remix-run/react';
-import { getSocialMetas } from '../../utils/seo/meta';
+import { getSocialMetas } from '../utils/seo/meta';
+import experience from "~/data/experience";
+import ExperienceSection from "~/components/ExperienceSection";
 
 
 export const loader: LoaderFunction = ({ params }) => {

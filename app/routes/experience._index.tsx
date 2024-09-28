@@ -1,7 +1,7 @@
 import { json, useLoaderData, MetaFunction } from '@remix-run/react';
-import PageHeader from "../../components/PageHeader"
-import ExperienceSection from "../../components/ExperienceSection"
-import experience from '../../data/experience';
+import PageHeader from "../components/PageHeader"
+import ExperienceSection from "../components/ExperienceSection"
+import experience from '../data/experience';
 import TrackVisibility from '~/hooks/TrackVisibility';
 import { getSocialMetas } from '~/utils/seo/meta';
 
@@ -63,7 +63,8 @@ export default function Page() {
                             return (
                                 <ExperienceSection
                                     key={itemIndex}
-                                    item={item}
+                                    //@ts-expect-error - fix
+                                    item={item} 
                                     first={isFirst}
                                     last={isLast}
                                     home={true}

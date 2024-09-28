@@ -1,7 +1,17 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import experience from "~/data/experience";
 
-export default function ExperienceSection({ first = false, last = false, home = false, isVisible = false, item, full = false }: any) {
+interface ExperienceSectionProps {
+  item: typeof experience[number];
+  first?: boolean;
+  last?: boolean;
+  home?: boolean;
+  isVisible?: boolean;
+  full?: boolean;
+}
+
+export default function ExperienceSection({ item, first = false, last = false, home = false, isVisible = false, full = false }: ExperienceSectionProps) {
 
   const [expanded, setExpanded] = useState<boolean>(false);
   const baseLogo = `/images/logos/${item.companyLogo}.jpg`;
@@ -64,12 +74,12 @@ export default function ExperienceSection({ first = false, last = false, home = 
           <div className="mb-10">
             <p className="text-colorBrown text-sm xl:text-lg uppercase font-bold tracking-widest">Milestones: </p>
             <ul className="text-colorLightBrown text-base md:text-lg mt-1 w-5/6">
-              {item.milestones.map((mile: any, mileI: any) => {
+              {item.milestones.map((mile: typeof item.milestones[number], mileI: number) => {
                 return (
                   <li key={`mile-${mileI}`}>
                     {item.milestones.length > 1 && (<p>{mile.title}</p>)}
                     <ul>
-                      {mile.items.map((subMile: any, submileI: any) => {
+                      {mile.items.map((subMile: typeof mile.items[number], submileI: number) => {
                         return (
                           <li key={`submile-${submileI}`}>{subMile}</li>
                         )
@@ -86,7 +96,7 @@ export default function ExperienceSection({ first = false, last = false, home = 
           <div>
             <p className="text-colorBrown text-sm md:text-lg uppercase font-bold tracking-widest">Used: </p>
             <ul className="text-colorLightBrown text-base md:text-lg mt-1 w-5/6">
-              {item.technologies.map((tech: any, techI: any) => {
+              {item.technologies.map((tech: typeof item.technologies[number], techI: number) => {
                 return <li className="inline" key={`tech-${techI}`}>{tech}{techI === item.technologies.length - 1 ? '' : ','} </li>
               })}
             </ul>
