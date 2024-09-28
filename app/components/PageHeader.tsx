@@ -70,7 +70,7 @@ export default function PageHeader({ description, children }: {
               <div 
                 className="
                     w-2/6
-                    bg-slate-200
+                    bg-transparent
                 "
               >
                 <picture>

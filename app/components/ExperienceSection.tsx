@@ -16,7 +16,7 @@ export default function ExperienceSection({ item, first = false, last = false, h
   const [expanded, setExpanded] = useState<boolean>(false);
   const baseLogo = `/images/logos/${item.companyLogo}.jpg`;
   const fullLogo = `https://adrianf.com${baseLogo}`;
-  const cloudinaryLogo = `https://res.cloudinary.com/adrianf/image/fetch/f_auto,h_400,w_400,q_60/${fullLogo}`
+  const cloudinaryLogo = `https://res.cloudinary.com/adrianf/image/fetch/f_auto,h_200,w_200,q_60/${fullLogo}`
   return (
     <section
       className={`
@@ -40,8 +40,8 @@ export default function ExperienceSection({ item, first = false, last = false, h
 
         <p className="text-colorLighterBrown text-base mt-5">{item.company}</p>
         <p className="text-colorLighterBrown text-base">
-          {item.period.start} -{" "}
-          {item.period.end}
+          {item.period?.start} -{" "}
+          {item.period?.end}
         </p>
         <p className="text-colorLighterBrown text-base">{item.location}</p>
       </div>
@@ -74,10 +74,10 @@ export default function ExperienceSection({ item, first = false, last = false, h
           <div className="mb-10">
             <p className="text-colorBrown text-sm xl:text-lg uppercase font-bold tracking-widest">Milestones: </p>
             <ul className="text-colorLightBrown text-base md:text-lg mt-1 w-5/6">
-              {item.milestones.map((mile: typeof item.milestones[number], mileI: number) => {
+              {item.milestones?.map((mile: typeof item.milestones[number], mileI: number) => {
                 return (
                   <li key={`mile-${mileI}`}>
-                    {item.milestones.length > 1 && (<p>{mile.title}</p>)}
+                    {item.milestones?.length > 1 && (<p>{mile.title}</p>)}
                     <ul>
                       {mile.items.map((subMile: typeof mile.items[number], submileI: number) => {
                         return (
@@ -92,7 +92,7 @@ export default function ExperienceSection({ item, first = false, last = false, h
           </div>
         )}
 
-        {item.technologies.length > 0 && (
+        {item.technologies?.length > 0 && (
           <div>
             <p className="text-colorBrown text-sm md:text-lg uppercase font-bold tracking-widest">Used: </p>
             <ul className="text-colorLightBrown text-base md:text-lg mt-1 w-5/6">
